@@ -1,0 +1,27 @@
+<idea-plugin>
+    <id>com.johnrey.luatools.luatools</id>
+    <name>luatools</name>
+    <vendor email="johnreygood@gmail.com" url="http://www.yourcompany.com">johnrey</vendor>
+
+    <description>
+        lua点方法与冒号方法互相转换，便于个人开发使用。 lua点方法与冒号方法互相转换，便于个人开发使用
+    </description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="luatools.colonFunc" class="ToColon" text="转冒号方法" description="点方法转冒号方法">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <keyboard-shortcut first-keystroke="ctrl alt SEMICOLON" keymap="$default"/>
+        </action>
+        <action id="luatools.dotFunc" class="ToDot" text="转点方法" description="冒号方法转点方法">
+            <add-to-group group-id="GenerateGroup" anchor="first"/>
+            <keyboard-shortcut first-keystroke="ctrl alt PERIOD" keymap="$default"/>
+        </action>
+    </actions>
+</idea-plugin>
