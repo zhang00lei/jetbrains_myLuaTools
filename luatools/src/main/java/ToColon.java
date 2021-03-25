@@ -8,13 +8,16 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ToColon extends AnAction {
+    private String packageName;
+    private Map<String, String> funcInfoMap = new LinkedHashMap<>();
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-        Editor editor
         Project project = e.getData(PlatformDataKeys.PROJECT);
 
         //获取当前操作的类文件
@@ -43,8 +46,12 @@ public class ToColon extends AnAction {
 
     private void ToColonFunc(String luaFilePath, Project project) {
         List<String> fileContent = FileUtil.readUtf8Lines(luaFilePath);
-        String packageName = GetPackageName(fileContent);
+        packageName = GetPackageName(fileContent);
         if (StrUtil.isEmpty(packageName)) {
+            return;
+        }
+        this.funcInfoMap = ToolsUtil.getFuncInfo(fileContent, packageName);
+        if (this.funcInfoMap.size() == 0) {
             return;
         }
         StringBuilder sb = new StringBuilder();
@@ -53,18 +60,23 @@ public class ToColon extends AnAction {
             if (lineInfo.startsWith("local function ")) {
                 String luaInfo = lineInfo.trim();
                 String funcName = lineInfo.replace("local function ", "").split("\\(")[0];
-                String param = luaInfo.split("\\(")[1];
-                if (param.contains("self")) {
-                    param = param
-                            .replace("self,", "")
-                            .replace("self ,", "")
-                            .replace("self", "")
-                            .replace(")", "")
-                            .trim();
-                    sb.append(StrUtil.format("function {}:{}({})\n", packageName, funcName, param));
-                    luaFuncList.add(StrUtil.format("{}.{} = {}", packageName, funcName, funcName));
-                } else {
+                boolean isPrivateFunc = ToolsUtil.isPrivateFunc(funcName, fileContent, packageName);
+                if (isPrivateFunc) {
                     sb.append(luaInfo + "\n");
+                } else {
+                    String param = luaInfo.split("\\(")[1];
+                    if (param.contains("self")) {
+                        param = param
+                                .replace("self,", "")
+                                .replace("self ,", "")
+                                .replace("self", "")
+                                .replace(")", "")
+                                .trim();
+                        sb.append(StrUtil.format("function {}:{}({})\n", packageName, funcName, param));
+                        luaFuncList.add(StrUtil.format("{}.{} = {}", packageName, funcName, funcName));
+                    } else {
+                        sb.append(luaInfo + "\n");
+                    }
                 }
             } else {
                 if (StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {

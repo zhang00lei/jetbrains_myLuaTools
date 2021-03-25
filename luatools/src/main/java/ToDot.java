@@ -3,14 +3,14 @@ import cn.hutool.core.io.file.FileWriter;
 import cn.hutool.core.util.StrUtil;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ToDot extends AnAction {
+    private String packageName;
+    private Map<String, String> funcInfoMap;
 
     @Override
     public void actionPerformed(AnActionEvent e) {
@@ -26,25 +26,14 @@ public class ToDot extends AnAction {
         ToDotFunc(classPath, project);
     }
 
-    private String GetPackageName(List<String> fileContent) {
-        for (int i = fileContent.size() - 1; i >= 0; i--) {
-            String lineInfo = fileContent.get(i);
-            if (lineInfo.contains("{") || lineInfo.contains("(")) {
-                continue;
-            }
-
-            if (lineInfo.startsWith("return")) {
-                return lineInfo.replace("return", "").trim();
-            }
-        }
-
-        return "";
-    }
-
     private void ToDotFunc(String luaFilePath, Project project) {
         List<String> fileContent = FileUtil.readUtf8Lines(luaFilePath);
-        String packageName = GetPackageName(fileContent);
+        this.packageName = ToolsUtil.getPackageName(fileContent);
         if (StrUtil.isEmpty(packageName)) {
+            return;
+        }
+        this.funcInfoMap = ToolsUtil.getFuncInfo(fileContent, packageName);
+        if (this.funcInfoMap.size() == 0) {
             return;
         }
         StringBuilder sb = new StringBuilder();
