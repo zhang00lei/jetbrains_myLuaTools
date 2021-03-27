@@ -1,9 +1,14 @@
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.io.file.FileWriter;
 import cn.hutool.core.util.StrUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.codeStyle.CodeStyleManager;
 
+import java.io.File;
+import java.io.FileFilter;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,5 +106,100 @@ public class ToolsUtil {
             }
         }
         return "";
+    }
+
+    public static void toDotFunc(String luaFilePath) {
+        List<String> fileContent = FileUtil.readUtf8Lines(luaFilePath);
+        String packageName = ToolsUtil.getPackageName(fileContent);
+        if (StrUtil.isEmpty(packageName)) {
+            return;
+        }
+        Map<String, String> funcInfoMap = ToolsUtil.getFuncInfo(fileContent, packageName);
+        if (funcInfoMap.size() == 0) {
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+        List<String> luaFuncList = new ArrayList<>();
+        for (String lineInfo : fileContent) {
+            if (lineInfo.startsWith(StrUtil.format("function {}:", packageName))) {
+                String luaInfo = lineInfo.trim();
+                String funcName = luaInfo.replace(StrUtil.format("function {}:", packageName), "")
+                        .split("\\(")[0];
+                String param = luaInfo.split("\\(")[1];
+                param = param.replace(")", "").trim();
+                param = StrUtil.isEmpty(param) ? "self" : "self, " + param;
+                sb.append(StrUtil.format("local function {}({})\n", funcName, param));
+                luaFuncList.add(StrUtil.format("{}.{} = {}", packageName, funcName, funcName));
+            } else {
+                if (StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
+                    sb.append(lineInfo + "\n");
+                }
+            }
+        }
+        for (String funcName : luaFuncList) {
+            sb.append(funcName + "\n");
+        }
+        String content = sb.toString();
+        String returnStr = StrUtil.format("return {}", packageName);
+        content = content.replace("\n" + returnStr, "");
+        content += returnStr;
+        FileWriter write = new FileWriter(luaFilePath);
+        write.write(content);
+    }
+
+    public static void toColonFunc(String luaFilePath) {
+        List<String> fileContent = FileUtil.readUtf8Lines(luaFilePath);
+        String packageName = getPackageName(fileContent);
+        if (StrUtil.isEmpty(packageName)) {
+            return;
+        }
+        Map<String, String> funcInfoMap = ToolsUtil.getFuncInfo(fileContent, packageName);
+        if (funcInfoMap.size() == 0) {
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+        List<String> luaFuncList = new ArrayList<>();
+        for (String lineInfo : fileContent) {
+            if (lineInfo.startsWith("local function ")) {
+                String luaInfo = lineInfo.trim();
+                String funcName = lineInfo.replace("local function ", "").split("\\(")[0];
+                boolean isPrivateFunc = ToolsUtil.isPrivateFunc(funcName, fileContent, packageName);
+                if (isPrivateFunc) {
+                    sb.append(luaInfo + "\n");
+                } else {
+                    String param = luaInfo.split("\\(")[1];
+                    if (param.contains("self")) {
+                        param = param
+                                .replace("self,", "")
+                                .replace("self ,", "")
+                                .replace("self", "")
+                                .replace(")", "")
+                                .trim();
+                        sb.append(StrUtil.format("function {}:{}({})\n", packageName, funcName, param));
+                        luaFuncList.add(StrUtil.format("{}.{} = {}", packageName, funcName, funcName));
+                    } else {
+                        sb.append(luaInfo + "\n");
+                    }
+                }
+            } else {
+                if (StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
+                    sb.append(lineInfo + "\n");
+                }
+            }
+        }
+        FileWriter write = new FileWriter(luaFilePath);
+        write.write(sb.toString());
+    }
+
+    public static void dirFormatFunc(String dirPath, boolean toDotFunc) {
+        FileFilter filter = file -> file.getName().endsWith(".lua");
+        List<File> fileList = FileUtil.loopFiles(dirPath, filter);
+        for (File file : fileList) {
+            if (toDotFunc) {
+                ToolsUtil.toDotFunc(file.getAbsolutePath());
+            } else {
+                ToolsUtil.toColonFunc(file.getAbsolutePath());
+            }
+        }
     }
 }

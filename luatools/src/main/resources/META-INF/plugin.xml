@@ -23,5 +23,12 @@
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
             <keyboard-shortcut first-keystroke="ctrl alt PERIOD" keymap="$default"/>
         </action>
+        <action id="luatools.allToColonFunc" class="AllToColon" text="转冒号方法" description="点方法转冒号方法">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+        <action id="luatools.allToDotFunc" class="AllToDot" text="转点方法" description="冒号方法转点方法">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+
     </actions>
 </idea-plugin>
