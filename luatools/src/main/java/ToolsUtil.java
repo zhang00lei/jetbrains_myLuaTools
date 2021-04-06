@@ -131,7 +131,7 @@ public class ToolsUtil {
                 sb.append(StrUtil.format("local function {}({})\n", funcName, param));
                 luaFuncList.add(StrUtil.format("{}.{} = {}", packageName, funcName, funcName));
             } else {
-                if (StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
+                if (lineInfo.startsWith("--") || StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
                     sb.append(lineInfo + "\n");
                 }
             }
@@ -182,7 +182,7 @@ public class ToolsUtil {
                     }
                 }
             } else {
-                if (StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
+                if (lineInfo.startsWith("--") || StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
                     sb.append(lineInfo + "\n");
                 }
             }
