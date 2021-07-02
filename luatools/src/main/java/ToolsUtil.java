@@ -53,8 +53,12 @@ public class ToolsUtil {
     }
 
     public static boolean isPrivateFunc(String funcName, List<String> fileContent, String packageName) {
-        for (String lineInfo : fileContent) {
+        for (String lineInfoTemp : fileContent) {
+            String lineInfo = lineInfoTemp.trim();
             if (lineInfo.startsWith("--")) {
+                continue;
+            }
+            if(lineInfo.startsWith("Logger.")){
                 continue;
             }
             if (isContain(lineInfo, funcName)) {
@@ -131,7 +135,7 @@ public class ToolsUtil {
                 sb.append(StrUtil.format("local function {}({})\n", funcName, param));
                 luaFuncList.add(StrUtil.format("{}.{} = {}", packageName, funcName, funcName));
             } else {
-                if (lineInfo.startsWith("--") || StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
+                if (lineInfo.startsWith("Logger.") || lineInfo.startsWith("--") || StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
                     sb.append(lineInfo + "\n");
                 }
             }
@@ -182,7 +186,7 @@ public class ToolsUtil {
                     }
                 }
             } else {
-                if (lineInfo.startsWith("--") || StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
+                if (lineInfo.startsWith("Logger.") || lineInfo.startsWith("--") || StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
                     sb.append(lineInfo + "\n");
                 }
             }
