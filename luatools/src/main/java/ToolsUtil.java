@@ -58,7 +58,7 @@ public class ToolsUtil {
             if (lineInfo.startsWith("--")) {
                 continue;
             }
-            if(lineInfo.startsWith("Logger.")){
+            if (lineInfo.startsWith("Logger.")) {
                 continue;
             }
             if (isContain(lineInfo, funcName)) {
@@ -172,13 +172,16 @@ public class ToolsUtil {
                     sb.append(luaInfo + "\n");
                 } else {
                     String param = luaInfo.split("\\(")[1];
-                    if (param.contains("self")) {
-                        param = param
-                                .replace("self,", "")
-                                .replace("self ,", "")
-                                .replace("self", "")
-                                .replace(")", "")
-                                .trim();
+                    param = param.replace(")", "").replace(" ", "");
+                    String[] paramArray = param.split(",");
+                    if (paramArray.length >= 1 && paramArray[0].contains("self")) {
+                        param = "";
+                        for (int i = 1; i < paramArray.length; i++) {
+                            param += paramArray[i];
+                            if (i != paramArray.length - 1) {
+                                param += ", ";
+                            }
+                        }
                         sb.append(StrUtil.format("function {}:{}({})\n", packageName, funcName, param));
                         luaFuncList.add(StrUtil.format("{}.{} = {}", packageName, funcName, funcName));
                     } else {
