@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e9d7c295-31e1-4b85-8db8-f05978116c07" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ToolsUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ToolsUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,11 +106,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="jdk.selected.PLUGIN_MODULE" value="IntelliJ IDEA Community Edition IC-203.7148.57" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/ToDot.java" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.25179857" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/main/java/ToDot.java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -124,7 +125,7 @@
       <recent name="luafunctools.src" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.luatools [clean]">
+  <component name="RunManager" selected="Gradle.luatools [buildPlugin]">
     <configuration name="Plugin" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -230,7 +231,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="luatools [runIde]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="luatools [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -241,7 +242,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="runIde" />
+            <option value="dependencies" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -266,15 +267,15 @@
       <item itemvalue="Gradle.luatools [buildPlugin]" />
       <item itemvalue="Gradle.luatools [build]" />
       <item itemvalue="Gradle.luatools [clean]" />
-      <item itemvalue="Gradle.luatools [runIde]" />
+      <item itemvalue="Gradle.luatools [dependencies]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.luatools [clean]" />
         <item itemvalue="Gradle.luatools [buildPlugin]" />
+        <item itemvalue="Gradle.luatools [clean]" />
+        <item itemvalue="Gradle.luatools [dependencies]" />
         <item itemvalue="Gradle.luatools [build]" />
         <item itemvalue="Gradle.luatools [assemble]" />
-        <item itemvalue="Gradle.luatools [runIde]" />
       </list>
     </recent_temporary>
   </component>
@@ -314,7 +315,7 @@
     <watches-manager>
       <configuration name="GradleRunConfiguration">
         <watch expression="((PsiDirectoryImpl) psiDirectory).myFile.getPath()" language="JAVA" custom="com.intellij.psi.impl.file.PsiDirectoryImpl" />
-        <watch expression="psiDirectory.getText()" language="JAVA" />
+        <watch expression="ServiceManager.getService(e.getData(PlatformDataKeys.PROJECT),OpenSettingDialog.PathSetting.class)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
