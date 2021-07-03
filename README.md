@@ -15,6 +15,4 @@ A：项目开发所用框架(xlua-framework)地址https://github.com/passiony/xl
 
 ![image](https://github.com/zhang00lei/jetbrains_myLuaTools/blob/main/luatools/Img/%E5%8A%A8%E7%94%BB3.gif)
 
-![image](https://github.com/zhang00lei/jetbrains_myLuaTools/blob/main/luatools/Img/%E5%8A%A8%E7%94%BB4.gif)
-
 ![image](https://github.com/zhang00lei/jetbrains_myLuaTools/blob/main/luatools/Img/%E5%8A%A8%E7%94%BB5.gif)
