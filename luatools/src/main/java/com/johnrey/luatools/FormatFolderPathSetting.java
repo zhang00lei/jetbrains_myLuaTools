@@ -7,7 +7,7 @@ import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import com.johnrey.luatools.ui.*;
 
-public class ToolsSetting extends AnAction {
+public class FormatFolderPathSetting extends AnAction {
     private UIPathSetting pathSetting;
 
     @Override

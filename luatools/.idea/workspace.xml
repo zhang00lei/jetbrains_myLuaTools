@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9d7c295-31e1-4b85-8db8-f05978116c07" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/JumpCheckSetting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ToolsSetting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ui/UIJumpCheck.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ui/UIJumpCheck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ui/UIPathSetting.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ui/UIPathSetting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AllToColon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/SelectToColon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AllToDot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/SelectToDot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ConfigInterchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ConfigInterchange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/OpenSettingDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ToColon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ToColon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ToDot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ToDot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ToolsUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ToolsUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ToolsSetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/FormatFolderPathSetting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +139,7 @@
       <recent name="luafunctools.src" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.luatools [clean]">
+  <component name="RunManager" selected="Gradle.luatools [buildPlugin]">
     <configuration name="MainTip" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainTip" />
       <module name="luatools.main" />
@@ -262,8 +249,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.luatools [clean]" />
         <item itemvalue="Gradle.luatools [buildPlugin]" />
+        <item itemvalue="Gradle.luatools [clean]" />
         <item itemvalue="Application.UIJumpCheck" />
         <item itemvalue="Application.UIPathSetting" />
         <item itemvalue="Application.MainTip" />

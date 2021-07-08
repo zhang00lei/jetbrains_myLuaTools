@@ -23,14 +23,17 @@
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
             <keyboard-shortcut first-keystroke="ctrl alt PERIOD" keymap="$default"/>
         </action>
-        <action id="luatools.openSettingDialog" class="com.johnrey.luatools.ToolsSetting" text="LuaToolsSetting"
-                description="需要转换的目录绝对路径">
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
-        </action>
-        <action id="luatools.jumpCheckSetting" class="com.johnrey.luatools.JumpCheckSetting" text="LuaToolsJumpCheckSetting"
-                description="跳过检测行配置">
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
-        </action>
+
+        <group id="luatools.settings" text="LuaToolsSetting">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action id="luatools.openSettingDialog" class="com.johnrey.luatools.FormatFolderPathSetting" text="格式化目录配置"
+                    description="格式化目录配置">
+            </action>
+            <action id="luatools.jumpCheckSetting" class="com.johnrey.luatools.JumpCheckSetting"
+                    text="跳过检测行配置"
+                    description="跳过检测行配置">
+            </action>
+        </group>
         <action id="luatools.allToColonFunc" class="com.johnrey.luatools.SelectToColon" text="转冒号方法"
                 description="点方法转冒号方法">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
