@@ -8,9 +8,11 @@ version '1.1-RELEASE'
 
 repositories {
     mavenCentral()
+    flatDir dirs:"C:/Program Files/JetBrains/IntelliJ IDEA Community Edition 2020.3.3/lib"
 }
 
 dependencies {
+    compile name: 'forms_rt', version: '13.1.1'
     compile 'cn.hutool:hutool-all:5.7.3'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'

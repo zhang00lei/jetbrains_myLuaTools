@@ -27,10 +27,6 @@
                 description="需要转换的目录绝对路径">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
         </action>
-        <action id="luatools.jumpCheckSetting" class="com.johnrey.luatools.JumpCheckSetting" text="LuaToolsJumpCheckSetting"
-                description="跳过检测行配置">
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
-        </action>
         <action id="luatools.allToColonFunc" class="com.johnrey.luatools.SelectToColon" text="转冒号方法"
                 description="点方法转冒号方法">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>

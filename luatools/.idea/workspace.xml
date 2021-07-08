@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9d7c295-31e1-4b85-8db8-f05978116c07" name="Default Changelist" comment="" />
+    <list default="true" id="e9d7c295-31e1-4b85-8db8-f05978116c07" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/JumpCheckSetting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ToolsSetting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ui/UIJumpCheck.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ui/UIJumpCheck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ui/UIPathSetting.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ui/UIPathSetting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AllToColon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/SelectToColon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AllToDot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/SelectToDot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ConfigInterchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ConfigInterchange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/OpenSettingDialog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ToColon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ToColon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ToDot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ToDot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ToolsUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/johnrey/luatools/ToolsUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,6 +76,12 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="intellij" type="c8890929:TasksNode$1" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="luatools" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -94,7 +116,9 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1puQlj4ujfkf5a7FLTov7sIZvxC" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -102,19 +126,25 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="306" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="469" />
     <property name="jdk.selected.PLUGIN_MODULE" value="IntelliJ IDEA Community Edition IC-203.7148.57" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/ToDot.java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.25179857" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/main/java/ToDot.java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\luatools\formatfunction\src\main\java" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\jetbrains_myLuaTools\jetbrains_myLuaTools\luatools\src\main\java\ui" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.johnrey.luatools" />
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -122,7 +152,34 @@
       <recent name="luafunctools.src" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.luatools [buildPlugin]">
+  <component name="RunManager" selected="Gradle.luatools [clean]">
+    <configuration name="MainTip" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainTip" />
+      <module name="luatools.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UIJumpCheck" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.johnrey.luatools.ui.UIJumpCheck" />
+      <module name="luatools.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.johnrey.luatools.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UIPathSetting" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UIPathSetting" />
+      <module name="luatools.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Plugin" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -144,27 +201,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="luatools [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="assemble" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="luatools [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -177,27 +213,6 @@
         <option name="taskNames">
           <list>
             <option value="buildPlugin" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="luatools [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -228,27 +243,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="luatools [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="dependencies" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -ea" />
@@ -259,20 +253,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.MainTip" />
+      <item itemvalue="Application.UIPathSetting" />
+      <item itemvalue="Application.UIJumpCheck" />
       <item itemvalue="Gradle.Plugin" />
-      <item itemvalue="Gradle.luatools [assemble]" />
-      <item itemvalue="Gradle.luatools [buildPlugin]" />
-      <item itemvalue="Gradle.luatools [build]" />
       <item itemvalue="Gradle.luatools [clean]" />
-      <item itemvalue="Gradle.luatools [dependencies]" />
+      <item itemvalue="Gradle.luatools [buildPlugin]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.luatools [buildPlugin]" />
         <item itemvalue="Gradle.luatools [clean]" />
-        <item itemvalue="Gradle.luatools [dependencies]" />
-        <item itemvalue="Gradle.luatools [build]" />
-        <item itemvalue="Gradle.luatools [assemble]" />
+        <item itemvalue="Gradle.luatools [buildPlugin]" />
+        <item itemvalue="Application.UIJumpCheck" />
+        <item itemvalue="Application.UIPathSetting" />
+        <item itemvalue="Application.MainTip" />
       </list>
     </recent_temporary>
   </component>

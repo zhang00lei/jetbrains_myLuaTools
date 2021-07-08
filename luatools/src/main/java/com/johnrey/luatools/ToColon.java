@@ -1,7 +1,10 @@
+package com.johnrey.luatools;
+
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import com.johnrey.luatools.ToolsUtil;
 
 public class ToColon extends AnAction {
     @Override

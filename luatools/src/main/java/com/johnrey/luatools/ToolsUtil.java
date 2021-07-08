@@ -1,10 +1,14 @@
+package com.johnrey.luatools;
+
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.file.FileWriter;
 import cn.hutool.core.util.StrUtil;
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.codeStyle.CodeStyleManager;
+import com.johnrey.luatools.ui.UIJumpCheck;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -16,6 +20,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ToolsUtil {
+    private static List<String> jumpCheckInfoArray = new ArrayList<>();
+
     public static void reformatJavaFile(PsiElement theElement, Project project) {
         if (theElement == null) {
             return;
@@ -55,10 +61,7 @@ public class ToolsUtil {
     public static boolean isPrivateFunc(String funcName, List<String> fileContent, String packageName) {
         for (String lineInfoTemp : fileContent) {
             String lineInfo = lineInfoTemp.trim();
-            if (lineInfo.startsWith("--")) {
-                continue;
-            }
-            if (lineInfo.startsWith("Logger.")) {
+            if(strInJumpCheckInfo(lineInfo)){
                 continue;
             }
             if (isContain(lineInfo, funcName)) {
@@ -135,7 +138,8 @@ public class ToolsUtil {
                 sb.append(StrUtil.format("local function {}({})\n", funcName, param));
                 luaFuncList.add(StrUtil.format("{}.{} = {}", packageName, funcName, funcName));
             } else {
-                if (lineInfo.startsWith("Logger.") || lineInfo.startsWith("--") || StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
+                boolean isFind = strInJumpCheckInfo(lineInfo);
+                if (isFind || StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
                     sb.append(lineInfo + "\n");
                 }
             }
@@ -189,7 +193,8 @@ public class ToolsUtil {
                     }
                 }
             } else {
-                if (lineInfo.startsWith("Logger.") || lineInfo.startsWith("--") || StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
+                boolean isFind = strInJumpCheckInfo(lineInfo);
+                if (isFind || StrUtil.isEmpty(lineInfo) || !luaFuncList.contains(lineInfo)) {
                     sb.append(lineInfo + "\n");
                 }
             }
@@ -209,4 +214,37 @@ public class ToolsUtil {
             }
         }
     }
+
+
+    private static List<String> getJumpCheckInfo() {
+        if (jumpCheckInfoArray.isEmpty()) {
+            String info = PropertiesComponent.getInstance().getValue(UIJumpCheck.JUMP_CHECK_KEY, "");
+            String[] tempArray = info.split("\n");
+            for (String temp : tempArray) {
+                if (StrUtil.isNotEmpty(temp)) {
+                    jumpCheckInfoArray.add(temp);
+                }
+            }
+        }
+        return jumpCheckInfoArray;
+    }
+
+    private static boolean strInJumpCheckInfo(String lineInfo) {
+        if (jumpCheckInfoArray.isEmpty()) {
+            String info = PropertiesComponent.getInstance().getValue(UIJumpCheck.JUMP_CHECK_KEY, "");
+            String[] tempArray = info.split("\n");
+            for (String temp : tempArray) {
+                if (StrUtil.isNotEmpty(temp)) {
+                    jumpCheckInfoArray.add(temp);
+                }
+            }
+        }
+        for (String infoTemp : jumpCheckInfoArray) {
+            if (lineInfo.startsWith(infoTemp)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
