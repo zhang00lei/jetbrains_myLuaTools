@@ -1,21 +1,21 @@
-package com.johnrey.luatools;
+package com.johnrey.luatools.setting;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.project.Project;
-import com.johnrey.luatools.ui.UIJumpCheck;
 import org.jetbrains.annotations.NotNull;
+import com.johnrey.luatools.ui.*;
 
-public class JumpCheckSetting extends AnAction {
-    private UIJumpCheck uiJumpCheck;
+public class FormatFolderPathSetting extends AnAction {
+    private UIPathSetting pathSetting;
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
         Project project = e.getData(PlatformDataKeys.PROJECT);
-        if (uiJumpCheck == null) {
-            uiJumpCheck = new UIJumpCheck();
+        if (pathSetting == null) {
+            pathSetting = new UIPathSetting();
         }
-        uiJumpCheck.setEnable(project, true);
+        pathSetting.setEnable(project, true);
     }
 }

@@ -61,7 +61,7 @@ public class ToolsUtil {
     public static boolean isPrivateFunc(String funcName, List<String> fileContent, String packageName) {
         for (String lineInfoTemp : fileContent) {
             String lineInfo = lineInfoTemp.trim();
-            if(strInJumpCheckInfo(lineInfo)){
+            if (strInJumpCheckInfo(lineInfo)) {
                 continue;
             }
             if (isContain(lineInfo, funcName)) {
@@ -213,20 +213,6 @@ public class ToolsUtil {
                 ToolsUtil.toColonFunc(file.getAbsolutePath());
             }
         }
-    }
-
-
-    private static List<String> getJumpCheckInfo() {
-        if (jumpCheckInfoArray.isEmpty()) {
-            String info = PropertiesComponent.getInstance().getValue(UIJumpCheck.JUMP_CHECK_KEY, "");
-            String[] tempArray = info.split("\n");
-            for (String temp : tempArray) {
-                if (StrUtil.isNotEmpty(temp)) {
-                    jumpCheckInfoArray.add(temp);
-                }
-            }
-        }
-        return jumpCheckInfoArray;
     }
 
     private static boolean strInJumpCheckInfo(String lineInfo) {

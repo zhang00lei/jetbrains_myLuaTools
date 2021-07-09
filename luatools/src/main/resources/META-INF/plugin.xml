@@ -23,17 +23,24 @@
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
             <keyboard-shortcut first-keystroke="ctrl alt PERIOD" keymap="$default"/>
         </action>
-
+        <!--setting start-->
         <group id="luatools.settings" text="LuaToolsSetting">
             <add-to-group group-id="MainMenu" anchor="last"/>
-            <action id="luatools.openSettingDialog" class="com.johnrey.luatools.FormatFolderPathSetting" text="格式化目录配置"
-                    description="格式化目录配置">
+            <action id="luatools.ConfigInterchange" class="com.johnrey.luatools.ConfigInterchange" text="互转所有"
+                    description="互转所有">
             </action>
-            <action id="luatools.jumpCheckSetting" class="com.johnrey.luatools.JumpCheckSetting"
-                    text="跳过检测行配置"
-                    description="跳过检测行配置">
-            </action>
+            <group text="配置" description="配置" popup="true">
+                <action id="luatools.openSettingDialog" class="com.johnrey.luatools.setting.FormatFolderPathSetting"
+                        text="格式化目录配置"
+                        description="格式化目录配置">
+                </action>
+                <action id="luatools.jumpCheckSetting" class="com.johnrey.luatools.setting.JumpCheckSetting"
+                        text="跳过检测行配置"
+                        description="跳过检测行配置">
+                </action>
+            </group>
         </group>
+        <!--setting end-->
         <action id="luatools.allToColonFunc" class="com.johnrey.luatools.SelectToColon" text="转冒号方法"
                 description="点方法转冒号方法">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
@@ -41,9 +48,6 @@
         <action id="luatools.allToDotFunc" class="com.johnrey.luatools.SelectToDot" text="转点方法" description="冒号方法转点方法">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
         </action>
-        <action id="luatools.ConfigInterchange" class="com.johnrey.luatools.ConfigInterchange" text="根据配置互相转换"
-                description="根据配置互相转换">
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-        </action>
+
     </actions>
 </idea-plugin>

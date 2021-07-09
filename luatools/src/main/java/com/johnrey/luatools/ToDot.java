@@ -2,6 +2,7 @@ package com.johnrey.luatools;
 
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 
@@ -17,5 +18,6 @@ public class ToDot extends AnAction {
         PsiElement psiElement = e.getData(LangDataKeys.PSI_ELEMENT);
         ToolsUtil.reformatJavaFile(psiElement, project);
         ToolsUtil.toDotFunc(classPath);
+        ProjectUtil.guessProjectDir(project).refresh(false, true);
     }
 }

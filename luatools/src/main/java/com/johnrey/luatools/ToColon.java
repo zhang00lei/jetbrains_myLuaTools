@@ -2,9 +2,9 @@ package com.johnrey.luatools;
 
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
-import com.johnrey.luatools.ToolsUtil;
 
 public class ToColon extends AnAction {
     @Override
@@ -18,5 +18,6 @@ public class ToColon extends AnAction {
         PsiElement psiElement = e.getData(LangDataKeys.PSI_ELEMENT);
         ToolsUtil.reformatJavaFile(psiElement, project);
         ToolsUtil.toColonFunc(classPath);
+        ProjectUtil.guessProjectDir(project).refresh(false, true);
     }
 }
