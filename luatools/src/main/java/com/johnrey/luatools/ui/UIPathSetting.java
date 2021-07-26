@@ -102,5 +102,4 @@ public class UIPathSetting extends JDialog {
     public JComponent $$$getRootComponent$$$() {
         return mainPanel;
     }
-
 }

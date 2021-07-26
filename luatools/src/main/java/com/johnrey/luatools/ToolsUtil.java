@@ -47,7 +47,7 @@ public class ToolsUtil {
                 continue;
             }
 
-            String funcPrefix = "local function";
+            String funcPrefix = "local function ";
             if (luaInfo.startsWith(funcPrefix)) {
                 String funcName = luaInfo.replace(funcPrefix, "").split("\\(")[0];
                 String param = luaInfo.split("\\(")[1];
