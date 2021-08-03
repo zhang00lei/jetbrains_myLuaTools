@@ -9,12 +9,12 @@ A：项目开发所用框架(xlua-framework)地址https://github.com/passiony/xl
 
 ### 运行效果如下
 
-![image](https://github.com/zhang00lei/jetbrains_myLuaTools/tree/main/jetbrains_codeSwitch/Img/%E5%8A%A8%E7%94%BB.gif)
+![image](https://github.com/zhang00lei/jetbrains_myLuaTools/blob/main/jetbrains_codeSwitch/Img/%E5%8A%A8%E7%94%BB.gif)
 
-![image](https://github.com/zhang00lei/jetbrains_myLuaTools/tree/main/jetbrains_codeSwitch/Img/%E5%8A%A8%E7%94%BB1.gif)
+![image](https://github.com/zhang00lei/jetbrains_myLuaTools/blob/main/jetbrains_codeSwitch/Img/%E5%8A%A8%E7%94%BB1.gif)
 
-![image](https://github.com/zhang00lei/jetbrains_myLuaTools/tree/main/jetbrains_codeSwitch/Img/%E5%8A%A8%E7%94%BB2.gif)
+![image](https://github.com/zhang00lei/jetbrains_myLuaTools/blob/main/jetbrains_codeSwitch/Img/%E5%8A%A8%E7%94%BB2.gif)
 
-![image](https://github.com/zhang00lei/jetbrains_myLuaTools/tree/main/jetbrains_codeSwitch/Img/%E5%8A%A8%E7%94%BB3.gif)
+![image](https://github.com/zhang00lei/jetbrains_myLuaTools/blob/main/jetbrains_codeSwitch/Img/%E5%8A%A8%E7%94%BB3.gif)
 
-![image](https://github.com/zhang00lei/jetbrains_myLuaTools/tree/main/jetbrains_codeSwitch/Img/%E5%8A%A8%E7%94%BB5.gif)
+![image](https://github.com/zhang00lei/jetbrains_myLuaTools/blob/main/jetbrains_codeSwitch/Img/%E5%8A%A8%E7%94%BB5.gif)
