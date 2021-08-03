@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.7.2'
+}
+
+group 'com.johnrey.luatools'
+version '1.2-RELEASE'
+
+repositories {
+    mavenCentral()
+    flatDir dirs:"C:/Program Files/JetBrains/IntelliJ IDEA Community Edition 2020.3.3/lib"
+}
+
+dependencies {
+    compile name: 'forms_rt', version: '13.1.1'
+    compile 'cn.hutool:hutool-all:5.7.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version '2020.3.2'
+}
+patchPluginXml {
+    changeNotes """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

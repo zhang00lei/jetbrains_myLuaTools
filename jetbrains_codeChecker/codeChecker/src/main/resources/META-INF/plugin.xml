@@ -1,0 +1,15 @@
+<idea-plugin>
+    <id>com.johnrey.codechecker</id>
+    <name>luatools</name>
+    <vendor email="johnreygood@gmail.com" url="https://www.cnblogs.com/Yellow0-0River/">johnrey</vendor>
+
+    <description>
+        Lua代码统计工具，统计文件行数、函数参数个数、函数代码长度、等相关信息。便于发现文件代码不合理的地方。
+    </description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow factoryClass="com.johnrey.codechecker.StatisticWindowFactory" id="statistic" anchor="bottom"/>
+    </extensions>
+</idea-plugin>
