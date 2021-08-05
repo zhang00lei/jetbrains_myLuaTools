@@ -6,7 +6,7 @@ import cn.hutool.core.util.StrUtil;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.fileEditor.OpenFileDescriptor;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.ToolWindow;
@@ -36,10 +36,8 @@ public class StatisticWindow {
     private JButton btnSetting;
     private JToolBar toolBar;
     private JPopupMenu popUpMenu;
-    private Project project;
 
-    public StatisticWindow(ToolWindow toolWindow, Project project) {
-        this.project = project;
+    public StatisticWindow(ToolWindow toolWindow) {
         refreshInfo();
         setListeners();
         createPopupMenu();
@@ -83,7 +81,6 @@ public class StatisticWindow {
         } else {
             saveInfo += ";" + pathInfo;
         }
-
         propertiesComponent.setValue(saveKey, saveInfo);
     }
 
@@ -99,13 +96,15 @@ public class StatisticWindow {
         return false;
     }
 
-    private String getSaveKey() {
+    public static String getSaveKey() {
+        Project project = ProjectManager.getInstance().getOpenProjects()[0];
         return project.getLocationHash() + "IgnorePath";
+//        return "E:\\craftclient\\Assets\\" + "IgnorePath";
     }
 
     private String getCheckerPath() {
 //        String path = "E:\\craftclient\\Assets\\";
-        String path = project.getBasePath();
+        String path = ProjectManager.getInstance().getOpenProjects()[0].getBasePath();
         path = StrUtil.replace(path, "/", "\\");
         path += "\\";
         return path;
@@ -146,6 +145,7 @@ public class StatisticWindow {
             String fileInfo = (String) tbContent.getValueAt(selectedRow, 0);
             String projectPath = getCheckerPath();
             saveIgnorePathInfo(projectPath + fileInfo);
+//            saveIgnorePathInfo(fileInfo);
             refreshInfo();
         });
         popUpMenu.add(item);
@@ -203,6 +203,7 @@ public class StatisticWindow {
         File file = new File(filePath);
         VirtualFile virtualFile = LocalFileSystem.getInstance().findFileByIoFile(file);
         if (virtualFile != null) {
+            Project project = ProjectManager.getInstance().getDefaultProject();
             new OpenFileDescriptor(project, virtualFile).navigate(true);
         }
     }

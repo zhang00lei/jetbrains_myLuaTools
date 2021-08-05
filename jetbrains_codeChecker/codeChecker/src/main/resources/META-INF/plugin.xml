@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.johnrey.codechecker</id>
-    <name>luatools</name>
+    <name>CodeChecker</name>
     <vendor email="johnreygood@gmail.com" url="https://www.cnblogs.com/Yellow0-0River/">johnrey</vendor>
 
     <description>
@@ -11,5 +11,6 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow factoryClass="com.johnrey.codechecker.StatisticWindowFactory" id="statistic" anchor="bottom"/>
+        <applicationConfigurable id="statistic_setting" instance="com.johnrey.codechecker.window.ConfigWindow"/>
     </extensions>
 </idea-plugin>
