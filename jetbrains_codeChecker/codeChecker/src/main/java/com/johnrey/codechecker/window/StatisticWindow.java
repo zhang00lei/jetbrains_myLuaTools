@@ -6,12 +6,12 @@ import cn.hutool.core.util.StrUtil;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.fileEditor.OpenFileDescriptor;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.ToolWindow;
 import com.johnrey.codechecker.CodeFileChecker;
 import com.johnrey.codechecker.entity.StatisticInfo;
+import com.johnrey.codechecker.util.CheckerUtil;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -36,15 +36,17 @@ public class StatisticWindow {
     private JButton btnSetting;
     private JToolBar toolBar;
     private JPopupMenu popUpMenu;
+    private Project project;
 
-    public StatisticWindow(ToolWindow toolWindow) {
+    public StatisticWindow(ToolWindow toolWindow, Project project) {
+        this.project = project;
         refreshInfo();
         setListeners();
         createPopupMenu();
     }
 
     private void refreshInfo() {
-        String path = getCheckerPath();
+        String path = CheckerUtil.getCheckerPath(project);
         FileFilter fileFilter = pathname -> pathname.getName().endsWith(".lua");
         List<File> files = FileUtil.loopFiles(path, fileFilter);
         files = CollectionUtil.filter(files, fileInfo -> !isIgnorePath(fileInfo.getAbsolutePath()));
@@ -74,7 +76,7 @@ public class StatisticWindow {
     }
 
     private void saveIgnorePathInfo(String pathInfo) {
-        String saveKey = getSaveKey();
+        String saveKey = CheckerUtil.getSaveKey();
         String saveInfo = propertiesComponent.getValue(saveKey, "");
         if (StrUtil.isEmpty(saveInfo)) {
             saveInfo = pathInfo;
@@ -85,7 +87,7 @@ public class StatisticWindow {
     }
 
     private boolean isIgnorePath(String pathInfo) {
-        String saveKey = getSaveKey();
+        String saveKey = CheckerUtil.getSaveKey();
         String saveInfo = propertiesComponent.getValue(saveKey, "");
         String[] pathArray = StrUtil.splitToArray(saveInfo, ";");
         for (String pathTemp : pathArray) {
@@ -94,20 +96,6 @@ public class StatisticWindow {
             }
         }
         return false;
-    }
-
-    public static String getSaveKey() {
-        Project project = ProjectManager.getInstance().getOpenProjects()[0];
-        return project.getLocationHash() + "IgnorePath";
-//        return "E:\\craftclient\\Assets\\" + "IgnorePath";
-    }
-
-    private String getCheckerPath() {
-//        String path = "E:\\craftclient\\Assets\\";
-        String path = ProjectManager.getInstance().getOpenProjects()[0].getBasePath();
-        path = StrUtil.replace(path, "/", "\\");
-        path += "\\";
-        return path;
     }
 
     private TableModel getTableModel(Object[][] data) {
@@ -143,9 +131,8 @@ public class StatisticWindow {
         item.addActionListener(e -> {
             int selectedRow = tbContent.getSelectedRow();
             String fileInfo = (String) tbContent.getValueAt(selectedRow, 0);
-            String projectPath = getCheckerPath();
+            String projectPath = CheckerUtil.getCheckerPath(project);
             saveIgnorePathInfo(projectPath + fileInfo);
-//            saveIgnorePathInfo(fileInfo);
             refreshInfo();
         });
         popUpMenu.add(item);
@@ -155,7 +142,7 @@ public class StatisticWindow {
         item.addActionListener(e -> {
             int selectRow = tbContent.getSelectedRow();
             String fileInfo = (String) tbContent.getValueAt(selectRow, 0);
-            String savePath = getCheckerPath() + fileInfo;
+            String savePath = CheckerUtil.getCheckerPath(project) + fileInfo;
             File tempFile = new File(savePath);
             saveIgnorePathInfo(tempFile.getParent());
             refreshInfo();
@@ -198,12 +185,11 @@ public class StatisticWindow {
     private void openFile() {
         int selectedRow = tbContent.getSelectedRow();
         String fileInfo = (String) tbContent.getValueAt(selectedRow, 0);
-        String projectPath = getCheckerPath();
+        String projectPath = CheckerUtil.getCheckerPath(project);
         String filePath = projectPath + fileInfo;
         File file = new File(filePath);
         VirtualFile virtualFile = LocalFileSystem.getInstance().findFileByIoFile(file);
         if (virtualFile != null) {
-            Project project = ProjectManager.getInstance().getDefaultProject();
             new OpenFileDescriptor(project, virtualFile).navigate(true);
         }
     }

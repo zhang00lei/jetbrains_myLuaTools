@@ -4,7 +4,9 @@ import cn.hutool.core.util.StrUtil;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.ConfigurationException;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.NlsContexts;
+import com.johnrey.codechecker.util.CheckerUtil;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -18,6 +20,7 @@ public class ConfigWindow implements Configurable {
     private JPanel panelMain;
     private JButton btnRemoveAll;
     private JButton btnRemoveSelect;
+    private Project project;
 
     @Override
     public @NlsContexts.ConfigurableName String getDisplayName() {
@@ -27,7 +30,7 @@ public class ConfigWindow implements Configurable {
     @Override
     public @Nullable
     JComponent createComponent() {
-        String value = propertiesComponent.getValue(StatisticWindow.getSaveKey(), "");
+        String value = propertiesComponent.getValue(CheckerUtil.getSaveKey(), "");
         String[] infos = StrUtil.splitToArray(value, ";");
         DefaultListModel jListModel = new DefaultListModel();
         for (String info : infos) {
@@ -82,6 +85,6 @@ public class ConfigWindow implements Configurable {
             }
         }
 
-        propertiesComponent.setValue(StatisticWindow.getSaveKey(), saveInfo);
+        propertiesComponent.setValue(CheckerUtil.getSaveKey(), saveInfo);
     }
 }
